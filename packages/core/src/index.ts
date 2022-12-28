@@ -14,7 +14,7 @@ export const encapsulate = <T>(
     ) => T,
 ): T => {
     const runtime = new Runtime();
-    const createSignal: Runtime["createSignal"] = <T>(value: T): Signal<T> =>
+    const createSignal: Runtime["createSignal"] = <TValue>(value: TValue): Signal<TValue> =>
         runtime.createSignal(value);
     const createEffect: Runtime["createEffect"] = (
         effectFn: () => void,
