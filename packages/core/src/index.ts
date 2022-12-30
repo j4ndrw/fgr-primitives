@@ -1,14 +1,13 @@
 import { Runtime } from "./runtime";
 import { Signal } from "./signal";
-import type { Runtime as IRuntime } from "./types";
 
 export const encapsulate = <T>(
     cb: (
         primitives: {
-            createSignal: IRuntime["createSignal"];
-            createEffect: IRuntime["createEffect"];
-            batch: IRuntime["batch"];
-            unmount: IRuntime["unmount"];
+            createSignal: Runtime["createSignal"];
+            createEffect: Runtime["createEffect"];
+            batch: Runtime["batch"];
+            unmount: Runtime["unmount"];
         },
         runtime: Runtime,
     ) => T,

@@ -3,17 +3,13 @@
     "version": "1.0.0",
     "description": "The core library that provides primitive for fine-grained reactive systems",
     "main": "dist/index.js",
-    "types": "types/index.d.ts",
+    "types": "dist/index.d.ts",
     "author": "j4ndrw <murjan_andreialin@yahoo.com>",
-    "files": [
-        "dist",
-        "types"
-    ],
     "scripts": {
         "declarations": "npx tsc --rootDir src --declarationDir types --downlevelIteration --declaration --emitDeclarationOnly",
         "test": "npx jest",
         "clean": "rm -rf dist && rm -rf types",
-        "build": "npx babel src --extensions '.ts' --out-file dist/index.js && yarn declarations",
+        "build": "tsup --entry.index src/index.ts --format cjs --dts",
         "prepublish": "yarn clean && yarn build"
     },
     "keywords": [],
