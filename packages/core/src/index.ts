@@ -2,6 +2,10 @@ import { Runtime } from "./runtime";
 import { Signal } from "./signal";
 import { Primitives } from "./types";
 
+/**
+ * A function that provides Fine-Grained Reactivity primitives
+ * inside the callback function it takes as an argument.
+ */
 export const encapsulate = <T>(
     cb: (primitives: Primitives, runtime: Runtime) => T,
 ): T => {
