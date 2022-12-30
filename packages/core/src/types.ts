@@ -20,9 +20,9 @@ export interface Runtime {
         }
     >;
 
-    createSignal: <T>(value: T) => Signal<T>;
+    signal: <T>(value: T) => Signal<T>;
 
-    createEffect: (effectFn: () => void) => void;
+    effect: (effectFn: () => void) => void;
     runEffect: (effectId: EffectId) => void;
 
     batch: (cb: () => void) => void;

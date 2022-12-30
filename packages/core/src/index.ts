@@ -4,8 +4,8 @@ import { Signal } from "./signal";
 export const encapsulate = <T>(
     cb: (
         primitives: {
-            createSignal: Runtime["createSignal"];
-            createEffect: Runtime["createEffect"];
+            signal: Runtime["signal"];
+            effect: Runtime["effect"];
             batch: Runtime["batch"];
             unmount: Runtime["unmount"];
         },
@@ -13,13 +13,13 @@ export const encapsulate = <T>(
     ) => T,
 ): T => {
     const runtime = new Runtime();
-    const createSignal: Runtime["createSignal"] = <TValue>(value: TValue): Signal<TValue> =>
-        runtime.createSignal(value);
-    const createEffect: Runtime["createEffect"] = (
+    const signal: Runtime["signal"] = <TValue>(value: TValue): Signal<TValue> =>
+        runtime.signal(value);
+    const effect: Runtime["effect"] = (
         effectFn: () => void,
-    ): void => runtime.createEffect(effectFn);
+    ): void => runtime.effect(effectFn);
     const batch: Runtime["batch"] = (cb: () => void) => runtime.batch(cb);
     const unmount: Runtime["unmount"] = cleanupFn => runtime.unmount(cleanupFn);
 
-    return cb({ createSignal, createEffect, batch, unmount }, runtime);
+    return cb({ signal, effect, batch, unmount }, runtime);
 };

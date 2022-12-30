@@ -1,14 +1,14 @@
 import { encapsulate } from "../src";
 
-encapsulate(({ createSignal, createEffect, batch }) => {
-    const count = createSignal(0);
-    const count2 = createSignal(0);
+encapsulate(({ signal, effect, batch }) => {
+    const count = signal(0);
+    const count2 = signal(0);
 
-    createEffect(() => {
+    effect(() => {
         count.get();
     });
 
-    createEffect(() => {
+    effect(() => {
         console.debug({ count: count.get(), count2: count2.get() });
     });
 

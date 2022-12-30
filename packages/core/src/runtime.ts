@@ -32,7 +32,7 @@ export class Runtime implements IRuntime {
         this.subscriptionMap = new Map();
     }
 
-    createSignal<T>(value: T): Signal<T> {
+    signal<T>(value: T): Signal<T> {
         this.signalValues.push(value);
 
         return new Signal({
@@ -41,7 +41,7 @@ export class Runtime implements IRuntime {
         });
     }
 
-    createEffect(effectFn: () => void) {
+    effect(effectFn: () => void) {
         this.effects.push(effectFn);
         this.runEffect({ value: this.effects.length - 1 });
     }
