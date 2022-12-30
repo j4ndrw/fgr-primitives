@@ -4,6 +4,7 @@
     "description": "The core library that provides primitive for fine-grained reactive systems",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
+    "files": ["dist", "README.md"],
     "author": "j4ndrw <murjan_andreialin@yahoo.com>",
     "scripts": {
         "declarations": "yarn tsc --rootDir src --declarationDir types --downlevelIteration --declaration --emitDeclarationOnly",
