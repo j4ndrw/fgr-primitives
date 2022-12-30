@@ -31,6 +31,13 @@ export interface Runtime {
     unmount: (cleanupFn: () => void) => void;
 }
 
+export type Primitives = {
+    signal: Runtime["signal"];
+    effect: Runtime["effect"];
+    batch: Runtime["batch"];
+    unmount: Runtime["unmount"];
+};
+
 export type SignalId = number;
 export type EffectId = number;
 export type BatchId = number;
