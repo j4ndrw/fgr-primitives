@@ -15,9 +15,8 @@ export const encapsulate = <T>(
     const runtime = new Runtime();
     const signal: Runtime["signal"] = <TValue>(value: TValue): Signal<TValue> =>
         runtime.signal(value);
-    const effect: Runtime["effect"] = (
-        effectFn: () => void,
-    ): void => runtime.effect(effectFn);
+    const effect: Runtime["effect"] = (effectFn: () => void): void =>
+        runtime.effect(effectFn);
     const batch: Runtime["batch"] = (cb: () => void) => runtime.batch(cb);
     const unmount: Runtime["unmount"] = cleanupFn => runtime.unmount(cleanupFn);
 

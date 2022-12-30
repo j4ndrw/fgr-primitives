@@ -31,9 +31,8 @@ export interface Runtime {
     unmount: (cleanupFn: () => void) => void;
 }
 
-export type SignalId = { value: number };
+export type SignalId = number;
+export type EffectId = number;
+export type BatchId = number;
 
 export type Effect = () => void;
-export type EffectId = { value: number };
-
-export type BatchId = { value: number };

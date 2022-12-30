@@ -37,19 +37,19 @@ export class Runtime implements IRuntime {
 
         return new Signal({
             runtime: this,
-            id: { value: this.signalValues.length - 1 },
+            id: this.signalValues.length - 1,
         });
     }
 
     effect(effectFn: () => void) {
         this.effects.push(effectFn);
-        this.runEffect({ value: this.effects.length - 1 });
+        this.runEffect(this.effects.length - 1);
     }
 
     runEffect(effectId: EffectId) {
         this.effectIdStack.push(effectId);
 
-        const effect = this.effects[effectId.value];
+        const effect = this.effects[effectId];
         effect?.();
 
         this.effectIdStack.pop();
@@ -57,11 +57,11 @@ export class Runtime implements IRuntime {
 
     batch(cb: () => void) {
         this.batches.push(cb);
-        this.runBatch({ value: this.batches.length - 1 });
+        this.runBatch(this.batches.length - 1);
     }
 
     runBatch(batchId: BatchId) {
-        const batchToRun = this.batches[batchId.value];
+        const batchToRun = this.batches[batchId];
 
         batchToRun?.();
 
@@ -71,7 +71,7 @@ export class Runtime implements IRuntime {
             break;
         }
 
-        this.batches.splice(batchId.value);
+        this.batches.splice(batchId);
     }
 
     unmount(cleanupFn: () => void) {

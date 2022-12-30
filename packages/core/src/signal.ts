@@ -10,7 +10,7 @@ export class Signal<T> implements ISignal<T> {
     }
 
     get(): T {
-        const value = this.runtime.signalValues[this.id.value] as T;
+        const value = this.runtime.signalValues[this.id] as T;
 
         const mostRecentEffectId =
             this.runtime.effectIdStack[this.runtime.effectIdStack.length - 1] ??
@@ -31,7 +31,7 @@ export class Signal<T> implements ISignal<T> {
         return value;
     }
     set(value: T) {
-        this.runtime.signalValues[this.id.value] = value;
+        this.runtime.signalValues[this.id] = value;
 
         const subscriber = this.runtime.subscriptionMap.get(this.id);
 
