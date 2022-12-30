@@ -1,6 +1,6 @@
 {
     "name": "@j4ndrw/fgr-core",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "The core library that provides primitive for fine-grained reactive systems",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
