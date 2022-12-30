@@ -75,12 +75,12 @@ export class Runtime implements IRuntime {
     }
 
     unmount(cleanupFn: () => void) {
+        cleanupFn();
+
         this.signalValues = [];
         this.effects = [];
         this.subscriptionMap.clear();
         this.effectIdStack = [];
         this.batches = [];
-
-        return cleanupFn();
     }
 }
