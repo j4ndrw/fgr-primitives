@@ -2,18 +2,18 @@
     "name": "@j4ndrw/fgr-core",
     "version": "1.0.0",
     "description": "The core library that provides primitive for fine-grained reactive systems",
-    "main": "lib/index.js",
+    "main": "dist/index.js",
     "types": "types/index.d.ts",
-    "author": "j4ndrw",
+    "author": "j4ndrw <murjan_andreialin@yahoo.com>",
     "files": [
-        "lib",
+        "dist",
         "types"
     ],
     "scripts": {
-        "ts": "npx tsc --rootDir src --declarationDir types --downlevelIteration --declaration --emitDeclarationOnly",
+        "declarations": "npx tsc --rootDir src --declarationDir types --downlevelIteration --declaration --emitDeclarationOnly",
         "test": "npx jest",
-        "clean": "rm -rf lib && rm -rf types",
-        "build": "npx babel src --extensions '.ts' --out-dir lib && yarn ts",
+        "clean": "rm -rf dist && rm -rf types",
+        "build": "npx babel src --extensions '.ts' --out-file dist/index.js && yarn declarations",
         "prepublish": "yarn clean && yarn build"
     },
     "keywords": [],

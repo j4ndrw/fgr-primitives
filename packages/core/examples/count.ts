@@ -1,4 +1,4 @@
-import { encapsulate } from ".";
+import { encapsulate } from "../src";
 
 encapsulate(({ createSignal, createEffect, batch }) => {
     const count = createSignal(0);
