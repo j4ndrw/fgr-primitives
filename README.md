@@ -12,7 +12,7 @@ The goal of this library is to inject fine grained reactivity to any non-reactiv
 
 After looking through Solid and Leptos, I formed an opinion that fine-grained reactivity is the most elegant and efficient paradigm / concept when it comes to building UIs, games or any other state machine!
 
-# Usage
+# Overview
 
 The library provides only 1 function: `encapsulate`. You can think of this function as a glorified [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) (Immediately-Invoked Function Expression).
 
@@ -63,6 +63,137 @@ encapsulate(({ signal, effect, batch }) => {
 });
 ```
 
-Here we're using the `batch` primitive to tell the runtime to postpone running the effect until the callback function inside the batch finishes running.
+Here we're using the `batch` primitive to postpone running the effect until the callback function inside the batch finishes running.
 
 As such, the effect will run 5 times, instead of 10 times without the batch.
+
+# Docs
+
+## Encapsulate
+
+### Definition
+
+A function that provides Fine-Grained Reactivity primitives inside the callback function it takes as an argument.
+
+### Example
+
+```ts
+import { encapsulate } from "@j4ndrw/fgr-core";
+
+encapsulate(({ signal, effect, batch, unmount }, runtime) => {
+    // You're business logic goes here
+});
+```
+
+## Signal
+
+### Definition
+
+A primitive that holds a mutable value.
+
+### Example
+
+```ts
+const count = signal(0);
+count.get(); // is 0
+
+count.set(1);
+count.get(); // is 1
+
+count.update(prev => prev + 3);
+count.get(); //is 4
+```
+
+## Effect
+
+### Definition
+
+A primitive that runs a given callback function on mount
+and whenever a dependency gets updated.
+
+### Example - Effect running once
+
+```ts
+effect(() => console.log("hello"));
+```
+
+### Example - Effect running when dependency is updated
+
+```ts
+const dependency = signal(0);
+
+// Outputs `hello ${dependency}` 6 times:
+//     - 1 time on mount
+//     - 5 times since the dependency is set 5 times
+//       in the for loop below
+effect(() => {
+    console.log(`hello ${dependency.get()}`);
+});
+
+for (let i = 1; i <= 5; i++) dependency.set(i);
+```
+
+## Batch
+
+### Definition
+
+A primitive that postpones running any
+effects for a set of dependencies until they
+have finished running a particular routine.
+
+### Example - Without `batch`
+
+```ts
+const s1 = signal(0);
+const s2 = signal(0);
+
+// Runs 11 times:
+//     - once, on mount
+//     - 10 times, since `s1` is set 5 times and `s2`
+//       is set 5 other times
+effect(() => {
+    s1.get();
+    s2.get();
+});
+
+for (let i = 1; i <= 5; i++) {
+    s1.set(i);
+    s2.set(i);
+}
+```
+
+### Example - With `batch`
+
+```ts
+const s1 = signal(0);
+const s2 = signal(0);
+
+// Runs 6 times:
+//     - once, on mount
+//     - 5 times, from the batched update
+effect(() => {
+    s1.get();
+    s2.get();
+});
+
+for (let i = 1; i <= 5; i++) {
+    batch(() => {
+        s1.set(i);
+        s2.set(i);
+    });
+}
+```
+
+## Unmount
+
+### Definition
+
+A primitive that runs a cleanup function and re-initializes all primitive values from the Fine-Grained Reactivity Runtime (signals, effects, etc...).
+
+### Example
+
+```ts
+unmount(() => {
+    // Cleanup logic goes here
+});
+```
