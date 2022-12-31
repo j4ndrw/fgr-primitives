@@ -1,11 +1,19 @@
 {
     "name": "@j4ndrw/fgr-core",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "The core library that provides primitives for fine-grained reactive systems",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
-    "files": ["dist", "README.md"],
+    "files": [
+        "dist",
+        "README.md"
+    ],
     "author": "j4ndrw <murjan_andreialin@yahoo.com>",
+    "repository": {
+        "url": "https://github.com/j4ndrw/fgr-primitives",
+        "directory": "packages/core",
+        "type": "git"
+    },
     "scripts": {
         "declarations": "yarn tsc --rootDir src --declarationDir types --downlevelIteration --declaration --emitDeclarationOnly",
         "test": "yarn jest",
