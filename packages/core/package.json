@@ -1,6 +1,6 @@
 {
     "name": "@j4ndrw/fgr-core",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "The core library that provides primitives for fine-grained reactive systems",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -22,5 +22,5 @@
         "typescript": "^4.9.4"
     },
     "keywords": [],
-    "license": "ISC"
+    "license": "MIT"
 }
