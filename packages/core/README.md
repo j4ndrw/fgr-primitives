@@ -26,6 +26,32 @@ yarn add @j4ndrw/fgr-core
 pnpm add @j4ndrw/fgr-core
 ```
 
+## ESM.SH
+
+```html
+<html>
+    ...
+    <body>
+        <script type="module">
+            import encapsulate from "https://esm.sh/@j4ndrw/fgr-core";
+        </script>
+    </body>
+</html>
+```
+
+## UNPKG
+
+```html
+<html>
+    ...
+    <body>
+        <script type="module">
+            import encapsulate from "https://unpkg.com/@j4ndrw/fgr-core/dist/index.mjs";
+        </script>
+    </body>
+</html>
+```
+
 # Objective
 
 The goal of this library is to inject fine grained reactivity to any non-reactive system, as well as existing reactive systems (i.e. React, Vue, etc...). It is a bit ambitious and it's not there yet when it comes to making the primitives work in existing reactive systems, but it would be super cool to learn about what obstacles need to be overcome to achieve this goal.
