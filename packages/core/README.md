@@ -6,6 +6,26 @@
 
 Please, don't use this library in production. For the moment, it is purely experimental and might not scale.
 
+# Installation
+
+## NPM
+
+```console
+npm install @j4ndrw/fgr-core
+```
+
+## Yarn
+
+```console
+yarn add @j4ndrw/fgr-core
+```
+
+## PNPM
+
+```console
+pnpm add @j4ndrw/fgr-core
+```
+
 # Objective
 
 The goal of this library is to inject fine grained reactivity to any non-reactive system, as well as existing reactive systems (i.e. React, Vue, etc...). It is a bit ambitious and it's not there yet when it comes to making the primitives work in existing reactive systems, but it would be super cool to learn about what obstacles need to be overcome to achieve this goal.
