@@ -20,3 +20,5 @@ export const encapsulate = <T>(
 
     return cb(primitives, runtime);
 };
+
+export default encapsulate;
