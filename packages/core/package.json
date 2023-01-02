@@ -1,6 +1,6 @@
 {
     "name": "@j4ndrw/fgr-core",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "The core library that provides primitives for fine-grained reactive systems",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -18,7 +18,7 @@
         "declarations": "yarn tsc --rootDir src --declarationDir types --downlevelIteration --declaration --emitDeclarationOnly",
         "test": "yarn jest",
         "clean": "rm -rf dist && rm -rf types",
-        "build": "tsup --entry.index src/index.ts --format esm --format cjs --format iife --dts",
+        "build": "tsup --entry.index src/index.ts --minify --format cjs,esm --dts --clean",
         "prepublish": "yarn clean && yarn build"
     },
     "devDependencies": {
