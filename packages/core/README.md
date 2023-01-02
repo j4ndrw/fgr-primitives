@@ -81,7 +81,7 @@ A function that provides Fine-Grained Reactivity primitives inside the callback 
 import { encapsulate } from "@j4ndrw/fgr-core";
 
 encapsulate(({ signal, effect, batch, unmount }, runtime) => {
-    // You're business logic goes here
+    // Your business logic goes here
 });
 ```
 
